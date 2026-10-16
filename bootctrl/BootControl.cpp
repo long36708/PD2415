@@ -24,7 +24,6 @@
 
 #include "BootControl.h"
 #include "boot_region_control_private.h"
-#include "boot_control_definition.h"
 
 namespace android {
 namespace hardware {
