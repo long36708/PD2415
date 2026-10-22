@@ -57,7 +57,7 @@ static bool ufs_set_active_boot_part(int boot)
 
     fd = open("/dev/block/sdc", O_RDWR);
     if (fd < 0) {
-        ALOGE("open /dev/block/sdc failed: %s", strerror(errno));
+        printf("%s: open device failed, err: %d\n", __func__, fd);
         return false;
     }
 

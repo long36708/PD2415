@@ -80,16 +80,18 @@ static void create_pl_link(std::string link, std::string devpath) {
     ALOGE("Failed to symlink %s to %s (%s)", devpath.c_str(), link.c_str(), strerror(errno));
 }
 
-/* Measure one preloader LUN: returns its start block and remaining block count. */
-static int measure_pl(const char* device, int* start_blk, int* blk_cnt) {
-  int fd;
+int create_pl_path(void) {
+  int start_blk, blk_cnt, fd;
   off_t pl_size;
   char header_desc[5];
-  ssize_t sz;
+  std::string path_a, path_b, link_path, dev_path, link;
+  DeviceMapper& dm = DeviceMapper::Instance();
+  ssize_t sz = 0;
 
-  fd = open(device, O_RDONLY);
+  
+  fd = open(UFS_PL_A, O_RDONLY);
   if (fd < 0) {
-    ALOGE("Cannot open %s (%s)", device, strerror(errno));
+    ALOGE("Cannot open %s (%s)", UFS_PL_A, strerror(errno));
     return 1;
   }
 
@@ -100,59 +102,46 @@ static int measure_pl(const char* device, int* start_blk, int* blk_cnt) {
     return 1;
   }
 
+  ALOGD("pl_size: %ld\n", pl_size);
+  blk_cnt = pl_size / DM_BLK_SIZE;
+
   if (lseek(fd, 0, SEEK_SET)) {
-    ALOGE("lseek to head fail(%s)", strerror(errno));
+    ALOGE("lseek to head fail(%s)\n", strerror(errno));
     close(fd);
     return 1;
   }
 
-  sz = read(fd, header_desc, sizeof(header_desc));
-  if (sz < 0) {
-    ALOGE("read fail (%s)", strerror(errno));
+  if ((sz = read(fd, header_desc, sizeof(header_desc))) < 0) {
+    ALOGE("read fail(%s)", strerror(errno));
     close(fd);
     return 1;
   }
-  if (sz != sizeof(header_desc)) ALOGE("%s: short read on %s", __func__, device);
+  if (sz != sizeof(header_desc)) ALOGE("%s size is not header_desc\n", __func__);
 
   close(fd);
 
   header_desc[sizeof(header_desc) - 1] = 0;
   if (!strncmp(header_desc, EMMCHEAD, strlen(EMMCHEAD))) {
-    *start_blk = EMMCHSZ / BLKSZ;
+    start_blk = EMMCHSZ / BLKSZ;
   } else if (!strncmp(header_desc, UFSHEAD, strlen(UFSHEAD)) ||
              !strncmp(header_desc, COMBOHEAD, strlen(COMBOHEAD))) {
-    *start_blk = UFSHSZ / BLKSZ;
+    start_blk = UFSHSZ / BLKSZ;
   } else {
-    ALOGE("Invalid header %s on %s", header_desc, device);
+    ALOGE("Invalid header %s", header_desc);
     return 1;
   }
 
-  *blk_cnt = pl_size / DM_BLK_SIZE - *start_blk;
-  ALOGD("%s: pl_size %ld, start_blk %d, blk_cnt %d", device, pl_size, *start_blk,
-        *blk_cnt);
-  return 0;
-}
-
-int create_pl_path(void) {
-  int start_blk_a, blk_cnt_a, start_blk_b, blk_cnt_b;
-  std::string path_a, path_b;
-  DeviceMapper& dm = DeviceMapper::Instance();
-
-  if (measure_pl(UFS_PL_A, &start_blk_a, &blk_cnt_a) != 0) {
+  blk_cnt -= start_blk;
+  
+  if (create_dm(UFS_PL_A, NAME_PL_A, &path_a, start_blk, blk_cnt) != 0) {
     return 1;
   }
-  if (measure_pl(UFS_PL_B, &start_blk_b, &blk_cnt_b) != 0) {
-    return 1;
-  }
-
-  if (create_dm(UFS_PL_A, NAME_PL_A, &path_a, start_blk_a, blk_cnt_a) != 0) {
-    return 1;
-  }
-  if (create_dm(UFS_PL_B, NAME_PL_B, &path_b, start_blk_b, blk_cnt_b) != 0) {
-    if (!dm.DeleteDevice(NAME_PL_A))
+  if (create_dm(UFS_PL_B, NAME_PL_B, &path_b, start_blk, blk_cnt) != 0) {
+    if (dm.DeleteDevice(UFS_PL_A))
       ALOGE("Cannot delete device %s (%s)", NAME_PL_A, strerror(errno));
     return 1;
   }
+  
 
   create_pl_link(LINK_PL_A, path_a);
   create_pl_link(LINK_PL_B, path_b);

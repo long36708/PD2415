@@ -9,8 +9,32 @@ on boot
     setprop sys.usb.config adb
     start adbd
 
+    start twrpdump
+
+   
     write /sys/class/leds/lcd-backlight/brightness 1400
     start mobicore
+
+    start vendor.boot-default
+
+
+    start vendor.health-default
+
+service vendor.boot-default /system/bin/hw/android.hardware.boot-service.mtk_recovery
+    class early_hal
+    user root
+    group root
+    seclabel u:r:recovery:s0
+    interface aidl android.hardware.boot.IBootControl/default
+
+service vendor.health-default /system/bin/hw/android.hardware.health-service.example_recovery
+    class hal
+    seclabel u:r:recovery:s0
+    user system
+    group system
+    capabilities WAKE_ALARM BLOCK_SUSPEND
+    file /dev/kmsg w
+
 
 on property:ro.vendor.trustonic.ready=true
     start keystore2
@@ -21,10 +45,6 @@ service twrpdump /system/bin/sh /twrp_logdump.sh
     group root
     oneshot
     disabled
-
-# /data must be mounted before the log dump can write to it
-on property:vold.post_fs_data_done=1
-    start twrpdump
 
 on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC "none"

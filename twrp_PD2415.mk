@@ -45,3 +45,4 @@ PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
 
 # vivo
 PRODUCT_PROPERTY_OVERRIDES += ro.vendor.vivo.product.model=$(PRODUCT_RELEASE_NAME)
+

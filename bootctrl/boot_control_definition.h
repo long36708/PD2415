@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#include <stdint.h>
-#include <bootloader_message/bootloader_message.h>
 
 /**
  * The A/B-specific bootloader message structure (4-KiB).
