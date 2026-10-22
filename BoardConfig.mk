@@ -69,41 +69,26 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtbo.img
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 
-BOARD_KERNEL_BASE := 0x3FFF8000
-
-# CHANGED: BOARD_PAGE_SIZE 不是 AOSP 变量名，mkbootimg 与校验脚本都不认；
-#          权威名是 BOARD_KERNEL_PAGESIZE，旧名保留做别名。
-
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_PAGE_SIZE := $(BOARD_KERNEL_PAGESIZE)
-BOARD_KERNEL_OFFSET := 0x00008000
-BOARD_RAMDISK_OFFSET := 0x26F08000
-BOARD_TAGS_OFFSET := 0x07C88000
 BOARD_BOOT_HEADER_VERSION := 4
-BOARD_VENDOR_BOOT_HEADER_VERSION := 4
-BOARD_DTB_SIZE := 322560
-BOARD_DTB_OFFSET := 0x07C88000
-BOARD_HEADER_SIZE := 2128
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
 
-# CHANGED: 所有 --*_offset 一律写十六进制字面量。
-#          原写法 --kernel_offset $(BOARD_KERNEL_OFFSET) 经 make 展开后才有效，
-#          而 BoardConfig 校验脚本是纯文本解析，拿到 "$(BOARD_KERNEL_OFFSET)"
-#          无法转成数字，于是判定 "没有任何 --*_offset"。
-#          注意：这里刻意不传 --base，v4 头要求 base 为 0，交给 mkbootimg 默认值。
+# From /proc/partitions on device: boot_b=98304 blocks, init_boot_b=8192 blocks
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 product.version=PD2415_A_15.0.33.7.W10 fingerprint.abbr=15/AP3A.240905.015.A1 region_ver=W10 product.solution=MTK
 
-BOARD_MKBOOTIMG_ARGS += --header_version 4
-BOARD_MKBOOTIMG_ARGS += --pagesize 4096
-BOARD_MKBOOTIMG_ARGS += --kernel_offset 0x00008000
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset 0x26F08000
-BOARD_MKBOOTIMG_ARGS += --tags_offset 0x07C88000
-BOARD_MKBOOTIMG_ARGS += --dtb_offset 0x07C88000
-BOARD_MKBOOTIMG_ARGS += --board ""
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-# CHANGED: --vendor_cmdline 只对 vendor_boot 镜像有效，boot.img 传它会被某些
-#          mkbootimg 版本拒绝；挪到 vendor_boot 专用变量。
+BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
+BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 8388608
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 134217728
 
-BOARD_MKBOOTIMG_VENDOR_BOOT_ARGS += --vendor_cmdline $(BOARD_VENDOR_CMDLINE)
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 4096
+
+BOARD_MKBOOTIMG_ARGS := --header_version 4 --kernel_offset 0x00000000 --ramdisk_offset 0x24b00000 --tags_offset 0x07c80000 --dtb_offset 0x07c80000
+
+
+# Recovery resources + ramdisk are packed into vendor_boot, not boot.
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
+BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
+
+
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
