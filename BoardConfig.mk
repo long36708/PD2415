@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2022 The TWRP Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,7 +70,12 @@ TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtbo.img
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 
 BOARD_KERNEL_BASE := 0x3FFF8000
-BOARD_PAGE_SIZE := 4096
+
+# CHANGED: BOARD_PAGE_SIZE 不是 AOSP 变量名，mkbootimg 与校验脚本都不认；
+#          权威名是 BOARD_KERNEL_PAGESIZE，旧名保留做别名。
+
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_PAGE_SIZE := $(BOARD_KERNEL_PAGESIZE)
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x26F08000
 BOARD_TAGS_OFFSET := 0x07C88000
@@ -82,14 +86,24 @@ BOARD_DTB_OFFSET := 0x07C88000
 BOARD_HEADER_SIZE := 2128
 BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
 
+# CHANGED: 所有 --*_offset 一律写十六进制字面量。
+#          原写法 --kernel_offset $(BOARD_KERNEL_OFFSET) 经 make 展开后才有效，
+#          而 BoardConfig 校验脚本是纯文本解析，拿到 "$(BOARD_KERNEL_OFFSET)"
+#          无法转成数字，于是判定 "没有任何 --*_offset"。
+#          注意：这里刻意不传 --base，v4 头要求 base 为 0，交给 mkbootimg 默认值。
+
+BOARD_MKBOOTIMG_ARGS += --header_version 4
+BOARD_MKBOOTIMG_ARGS += --pagesize 4096
+BOARD_MKBOOTIMG_ARGS += --kernel_offset 0x00008000
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset 0x26F08000
+BOARD_MKBOOTIMG_ARGS += --tags_offset 0x07C88000
+BOARD_MKBOOTIMG_ARGS += --dtb_offset 0x07C88000
+BOARD_MKBOOTIMG_ARGS += --board ""
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(BOARD_VENDOR_CMDLINE)
-BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_PAGE_SIZE) --board ""
-BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_VENDOR_BOOT_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
+# CHANGED: --vendor_cmdline 只对 vendor_boot 镜像有效，boot.img 传它会被某些
+#          mkbootimg 版本拒绝；挪到 vendor_boot 专用变量。
+
+BOARD_MKBOOTIMG_VENDOR_BOOT_ARGS += --vendor_cmdline $(BOARD_VENDOR_CMDLINE)
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
@@ -132,11 +146,11 @@ TARGET_SCREEN_DENSITY := 560
 BOARD_VNDK_VERSION := current
 
 # Vendor_boot recovery ramdisk
-BOARD_USES_RECOVERY_AS_BOOT := 
+BOARD_USES_RECOVERY_AS_BOOT :=
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := 
-BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := 
+BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE :=
+BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT :=
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
