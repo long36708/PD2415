@@ -9,18 +9,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # A/B
 AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    system \
-    product \
-    vendor \
-    odm \
-    vbmeta \
-    vendor_boot \
-    vbmeta_system \
-    vbmeta_vendor
-    
+
 PRODUCT_PACKAGES += \
     update_engine \
     update_engine_sideload \

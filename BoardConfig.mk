@@ -15,6 +15,8 @@
 #
 
 # Architecture
+DEVICE_PATH := device/VIVO/PD2415
+
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -34,6 +36,9 @@ ENABLE_SCHEDBOOST := true
 # Assertation
 TARGET_OTA_ASSERT_DEVICE := PD2415
 AB_OTA_UPDATER := true
+# Must be set in board scope; build/make/core/Makefile errors out with
+# "AB_OTA_PARTITIONS must be defined when using AB_OTA_UPDATER" if it is empty.
+AB_OTA_PARTITIONS := boot dtbo init_boot odm odm_dlkm product system system_dlkm system_ext vbmeta vbmeta_system vbmeta_vendor vendor vendor_boot vendor_dlkm
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := PD2415

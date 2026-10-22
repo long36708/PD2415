@@ -33,6 +33,11 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_RELEASE_NAME := PD2415
 DEVICE_PATH := device/VIVO/PD2415
 
+# Device packages, A/B and dynamic-partition settings live here.
+# Without this inherit, AB_OTA_PARTITIONS is empty and the build fails with
+# "AB_OTA_PARTITIONS must be defined when using AB_OTA_UPDATER".
+$(call inherit-product, $(DEVICE_PATH)/device.mk)
+
 # Device identifier
 PRODUCT_DEVICE := PD2415
 PRODUCT_NAME := twrp_PD2415
