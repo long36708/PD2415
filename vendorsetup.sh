@@ -27,7 +27,10 @@ if [ -f $FOX_MANIFEST_ROOT/bootable/recovery/orangefox_defaults.go -a -f $FOX_MA
 
     # Build
     export LC_ALL="C"
-    export FOX_VERSION=$(date +%y.%m.%d)
+    # FOX_VERSION was dropped in fox_14.1: bootable/recovery/orangefox.mk aborts the
+    # build with "'FOX_VERSION' is obsolete". Maintainer versioning now goes through
+    # FOX_MAINTAINER_PATCH_VERSION, which must be a whole number (no dots).
+    export FOX_MAINTAINER_PATCH_VERSION=$(date +%Y%m%d)
     export ALLOW_MISSING_DEPENDENCIES=true
     export TARGET_DEVICE_ALT="PD2415"
     export FOX_VIRTUAL_AB_DEVICE=1
