@@ -260,8 +260,6 @@ pkvm_smmu.ko
 pkvm_mkp.ko
 libarc4.ko
 rfkill.ko
-cfg80211.ko
-mac80211.ko
 mtk_et.ko
 ccmni.ko
 rps_perf.ko
@@ -285,9 +283,6 @@ connadp.ko
 connfem.ko
 conninfra.ko
 wmt_chrdev_wifi_connac3.ko
-wlan_drv_gen4m_6991_6653.ko
-bluetooth.ko
-btmtk_uart_unify.ko
 tmf8801.ko
 tmf8806.ko
 sec.ko
@@ -297,7 +292,6 @@ clk-dbg-mt6991.ko
 mtk-mmdvfs-v3-start.ko
 ccci_util_lib.ko
 ccci_auxadc.ko
-ccci_md_all.ko
 vsed.ko
 vne.ko
 vivo_netstats.ko
@@ -307,7 +301,6 @@ vivo_haptic_core.ko
 aw86938.ko
 aw86938s.ko
 sensors_class.ko
-vivo_ts.ko
 fp_dispatch_event.ko
 vblmc.ko
 vr.ko
