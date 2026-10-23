@@ -20,6 +20,12 @@ on boot
     # 缺任何一个都报 vtsthp_tcs_init "failed to get ext version" 不出点.
     # (活体验证: 补齐后 kalman 初始化完成, event4 吐完整 BTN_TOUCH 事件流)
     setprop vendor.vivo.touch.support.vtsthp_recovery0 1
+    # KeyMint TA (0706...4d.tlbin) 由 libMcClient 从 /vendor/app/mcRegistry
+    # 装载 —— TlcKM 找不到它时报 "Keymaster Trusted Application not found",
+    # keystore2 shared secret 无法协商. 我们的 TA 实际在 /vendor/mcRegistry,
+    # 建一层符号链接对齐官方路径 (活体验证: 协商立即成功).
+    mkdir /vendor/app 0755 shell shell
+    symlink /vendor/mcRegistry /vendor/app/mcRegistry
     symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
     
