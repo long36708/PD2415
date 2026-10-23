@@ -1,0 +1,340 @@
+/lib/modules/vfcs-meter.ko: /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/ufcs_mt6379.ko: /lib/modules/ufcs_class.ko
+/lib/modules/qcom_pm8008-regulator.ko:
+/lib/modules/nvmem-mt6681-efuse.ko: /lib/modules/i2c-mt65xx.ko /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/sec.ko:
+/lib/modules/mcupm.ko: /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mtk-pmic-keys.ko: /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/event_track.ko:
+/lib/modules/usb_dp_selector.ko: /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/mux_switch.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/cache-parity.ko: /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-pmic-wrap.ko: /lib/modules/aee_aed.ko
+/lib/modules/mtk-smi.ko: /lib/modules/aee_aed.ko
+/lib/modules/ise-trusty-ipc.ko: /lib/modules/ise-trusty.ko /lib/modules/mcDrvModule-ffa.ko /lib/modules/ffa_v11.ko /lib/modules/mtk-ise-mailbox.ko /lib/modules/ise_lpm.ko /lib/modules/tinysys-scmi.ko /lib/modules/event_track.ko
+/lib/modules/mmqos-mt6991.ko: /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/smmu_secure.ko:
+/lib/modules/device-apc-common.ko: /lib/modules/aee_aed.ko
+/lib/modules/aee_hangdet.ko: /lib/modules/mrdump.ko
+/lib/modules/i2c-mt65xx.ko: /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/mt6991_dcm.ko: /lib/modules/mtk_dcm.ko
+/lib/modules/vivo_slowpath_opt.ko: /lib/modules/vivo_rsc.ko
+/lib/modules/mtk_battery_oc_throttling.ko:
+/lib/modules/clk-dbg-mt6991.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/mtk-ise-mailbox.ko:
+/lib/modules/rpmb-mtk.ko: /lib/modules/ufs-mediatek-mod-ise.ko /lib/modules/rpmb.ko /lib/modules/blocktag.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/mcDrvModule-ffa.ko /lib/modules/ffa_v11.ko /lib/modules/mtk-ise-mailbox.ko /lib/modules/ise_lpm.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/leds-mtk.ko: /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/btmtk_uart_unify.ko: /lib/modules/bluetooth.ko /lib/modules/rfkill.ko /lib/modules/connfem.ko /lib/modules/conninfra.ko /lib/modules/vivo_board_info.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/ccci_md_all.ko /lib/modules/mtk_pbm.ko /lib/modules/mtk_mdpm.ko /lib/modules/mtk_dynamic_loading_throttling.ko /lib/modules/smpu.ko /lib/modules/emi-mpu.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/ccci_auxadc.ko /lib/modules/ccci_util_lib.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/ccmni.ko /lib/modules/handshake_counter.ko /lib/modules/vivo_tcp.ko /lib/modules/rps_perf.ko /lib/modules/connadp.ko /lib/modules/mtk_low_battery_throttling.ko /lib/modules/pmic_lvsys_notify.ko /lib/modules/pmic_lbat_service.ko /lib/modules/8250_mtk.ko /lib/modules/mtk-uart-apdma.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/rt5133-regulator.ko: /lib/modules/extdev_io_class.ko
+/lib/modules/vivo_board_info.ko: /lib/modules/vivo_board_info_detect.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/clk-mt6991-mmsys.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/mtu3.ko:
+/lib/modules/blk-enhance.ko:
+/lib/modules/mmqos-common.ko: /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/pkvm_mgmt.ko:
+/lib/modules/reset-ti-syscon.ko:
+/lib/modules/spmi-mtk-pmif.ko: /lib/modules/aee_aed.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/pinctrl-mtk-v2.ko:
+/lib/modules/vfcs-bq25890h.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/sn100.ko: /lib/modules/sn100_spi.ko /lib/modules/spi-mt65xx.ko /lib/modules/irq-dbg.ko
+/lib/modules/smpu-hook-v1.ko: /lib/modules/smpu.ko /lib/modules/emi-mpu.ko /lib/modules/aee_aed.ko
+/lib/modules/mtk-hw-semaphore.ko: /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/aee_aed.ko
+/lib/modules/v4l2-flash-led-class.ko:
+/lib/modules/panel-truly-nt35595-cmd.ko: /lib/modules/mtk_panel_ext.ko
+/lib/modules/isee-ffa.ko: /lib/modules/bootprof.ko /lib/modules/ffa_v11.ko
+/lib/modules/mtk_chg_type_det.ko: /lib/modules/charger_class.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko
+/lib/modules/pcie-mediatek-gen3.ko: /lib/modules/clkbuf.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/connadp.ko /lib/modules/mtk_low_battery_throttling.ko /lib/modules/pmic_lvsys_notify.ko /lib/modules/pmic_lbat_service.ko /lib/modules/aee_aed.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vivo_fs_trace.ko:
+/lib/modules/mtk-socinfo.ko:
+/lib/modules/clk-fmeter-mt6991.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/mtk_pep20.ko: /lib/modules/mtk_charger_framework.ko /lib/modules/adapter_class.ko /lib/modules/mtk_charger_algorithm_class.ko /lib/modules/charger_class.ko
+/lib/modules/smap-mt6991.ko:
+/lib/modules/mtk_bp_thl.ko:
+/lib/modules/mtk-mminfra-debug.ko: /lib/modules/tinysys-scmi.ko /lib/modules/clk-common.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko
+/lib/modules/vhp.ko:
+/lib/modules/monitor_hang.ko: /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mt6681-core.ko:
+/lib/modules/mtk-afe-external.ko:
+/lib/modules/sn100_spi.ko: /lib/modules/spi-mt65xx.ko /lib/modules/irq-dbg.ko
+/lib/modules/vfcs-misc-core.ko: /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vfcs-fg-common-core.ko: /lib/modules/vfcs-reserved-block-core.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vfcs-wls-monitor.ko: /lib/modules/vfcs-vivo-wls-idtp9415.ko /lib/modules/vfcs-vivo-wls-cps4041.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk_cpu_power_throttling.ko: /lib/modules/mtk_bp_thl.ko /lib/modules/mtk_battery_oc_throttling.ko /lib/modules/mtk_low_battery_throttling.ko /lib/modules/pmic_lvsys_notify.ko /lib/modules/pmic_lbat_service.ko
+/lib/modules/mtk-mmdvfs-v3.ko: /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/aee_aed.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/systracker.ko:
+/lib/modules/pwm-mtk-disp.ko:
+/lib/modules/mtk-mmc-dbg.ko: /lib/modules/blocktag.ko /lib/modules/mrdump.ko /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/pinctrl-mt6363.ko: /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/uarthub_drv.ko: /lib/modules/8250_mtk.ko /lib/modules/mtk-uart-apdma.ko /lib/modules/mtk_disp_notify.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/rtc-mt6685.ko: /lib/modules/aee_aed.ko
+/lib/modules/handshake_counter.ko: /lib/modules/vivo_tcp.ko
+/lib/modules/mtk-scpsys-mt6991-spm.ko: /lib/modules/mtk-scpsys.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/clk-mt6991-cam.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/vfcs-vivo-wls-cps4041.ko: /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-dvfsrc-helper.ko: /lib/modules/mtk-dvfsrc.ko /lib/modules/mtk-scpsys.ko /lib/modules/mtk_dramc.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/clk-mt6991.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/ccmni.ko: /lib/modules/handshake_counter.ko /lib/modules/vivo_tcp.ko /lib/modules/rps_perf.ko
+/lib/modules/vivo_tcp.ko:
+/lib/modules/ccci_util_lib.ko: /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/vivo_ts.ko: /lib/modules/sensors_class.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/pkvm_tmem.ko:
+/lib/modules/vfcs-bq28z610.ko: /lib/modules/vfcs-misc-core.ko /lib/modules/vfcs-multi-fg-core.ko /lib/modules/vfcs-meter.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/wlan_drv_gen4m_6991_6653.ko: /lib/modules/mddp.ko /lib/modules/pcie-mediatek-gen3.ko /lib/modules/clkbuf.ko /lib/modules/mtk_mbraink_bridge.ko /lib/modules/cfg80211.ko /lib/modules/wmt_chrdev_wifi_connac3.ko /lib/modules/mtk-dvfsrc.ko /lib/modules/mtk-scpsys.ko /lib/modules/rfkill.ko /lib/modules/connfem.ko /lib/modules/conninfra.ko /lib/modules/vivo_board_info.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/ccci_md_all.ko /lib/modules/mtk_pbm.ko /lib/modules/mtk_mdpm.ko /lib/modules/mtk_dynamic_loading_throttling.ko /lib/modules/smpu.ko /lib/modules/emi-mpu.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/ccci_auxadc.ko /lib/modules/ccci_util_lib.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/ccmni.ko /lib/modules/handshake_counter.ko /lib/modules/vivo_tcp.ko /lib/modules/rps_perf.ko /lib/modules/connadp.ko /lib/modules/mtk_low_battery_throttling.ko /lib/modules/pmic_lvsys_notify.ko /lib/modules/pmic_lbat_service.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mtk_tinysys_ipi.ko: /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mtk_dynamic_loading_throttling.ko:
+/lib/modules/mtk_dcm.ko:
+/lib/modules/thp_pool.ko:
+/lib/modules/connadp.ko: /lib/modules/mtk_low_battery_throttling.ko /lib/modules/pmic_lvsys_notify.ko /lib/modules/pmic_lbat_service.ko
+/lib/modules/mtk-dvfsrc-regulator.ko: /lib/modules/mtk-dvfsrc.ko /lib/modules/mtk-scpsys.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/clkbuf.ko: /lib/modules/spmi-mtk-pmif.ko /lib/modules/aee_aed.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-mbox-mailbox.ko:
+/lib/modules/ise_lpm.ko: /lib/modules/tinysys-scmi.ko
+/lib/modules/industrialio-triggered-buffer.ko: /lib/modules/kfifo_buf.ko
+/lib/modules/mtk_vdisp_v2.ko: /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/panel-alpha-jdi-nt36672e-vdo-60hz.ko: /lib/modules/rt4831a_drv.ko /lib/modules/mtk_panel_ext.ko /lib/modules/leds-mtk.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/logd_kernel.ko:
+/lib/modules/aw86938.ko: /lib/modules/vivo_haptic_core.ko /lib/modules/event_track.ko
+/lib/modules/phy-mtk-mt6379-eusb2-repeater.ko:
+/lib/modules/sch_uprio.ko: /lib/modules/sch_cfg.ko
+/lib/modules/panel-alpha-jdi-nt36672e-vdo-120hz.ko: /lib/modules/mtk_panel_ext.ko
+/lib/modules/pinctrl-mtk-common-v2_debug.ko: /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/lz4m.ko:
+/lib/modules/mtk_panel_ext.ko:
+/lib/modules/rps_perf.ko:
+/lib/modules/extcon-mtk-usb.ko: /lib/modules/vfcs-misc-core.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/emi-slb.ko: /lib/modules/aee_aed.ko
+/lib/modules/pmic_lvsys_notify.ko:
+/lib/modules/mtk-mmdvfs-v3-start.ko: /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mmprofile.ko: /lib/modules/aee_aed.ko
+/lib/modules/bluetooth.ko: /lib/modules/rfkill.ko
+/lib/modules/kfifo_buf.ko:
+/lib/modules/mtk-spmi-pmic.ko:
+/lib/modules/vfcs-max77932.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vfcs-bq25601d.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/emi.ko:
+/lib/modules/mt6316-regulator.ko:
+/lib/modules/reboot-mode.ko:
+/lib/modules/mux_switch.ko:
+/lib/modules/aw86938s.ko: /lib/modules/vivo_haptic_core.ko /lib/modules/event_track.ko
+/lib/modules/mtk-smi-dbg.ko: /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/aee_aed.ko
+/lib/modules/mddp.ko: /lib/modules/ccci_md_all.ko /lib/modules/mtk_pbm.ko /lib/modules/mtk_mdpm.ko /lib/modules/mtk_dynamic_loading_throttling.ko /lib/modules/smpu.ko /lib/modules/emi-mpu.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/ccci_auxadc.ko /lib/modules/ccci_util_lib.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/ccmni.ko /lib/modules/handshake_counter.ko /lib/modules/vivo_tcp.ko /lib/modules/rps_perf.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mtk_slbc.ko:
+/lib/modules/vfcs-reserved-block-core.ko: /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/pd_dbg_info.ko:
+/lib/modules/tinysys-scmi.ko:
+/lib/modules/bbklog_enable.ko:
+/lib/modules/mt6379-chg.ko: /lib/modules/charger_class.ko /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/ufcs_class.ko
+/lib/modules/mtk_rpmsg_mbox.ko: /lib/modules/mtk-mbox.ko
+/lib/modules/device-apc-mt6991.ko: /lib/modules/device-apc-common.ko /lib/modules/aee_aed.ko
+/lib/modules/rpmb.ko:
+/lib/modules/vfcs-mp2762.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-mbox.ko:
+/lib/modules/mtk_pbm.ko: /lib/modules/mtk_mdpm.ko /lib/modules/mtk_dynamic_loading_throttling.ko
+/lib/modules/vfcs-cms-core.ko: /lib/modules/rtc-mt6685.ko /lib/modules/pie_driver.ko /lib/modules/vfcs-misc-core.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/leds-mtk-disp.ko: /lib/modules/rt4831a_drv.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/rfkill.ko:
+/lib/modules/pkvm_mkp.ko: /lib/modules/mrdump.ko
+/lib/modules/vfcs-fuelsummary.ko: /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vivo_display.ko: /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/iommu_debug.ko: /lib/modules/mtk_iommu_util.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/mtk_charger_framework.ko: /lib/modules/adapter_class.ko /lib/modules/mtk_charger_algorithm_class.ko /lib/modules/charger_class.ko
+/lib/modules/clk-mt6991-bus.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/mm-fake-engine.ko:
+/lib/modules/vivo_bsp_engine.ko: /lib/modules/mrdump.ko
+/lib/modules/last_bus.ko: /lib/modules/dbg_error_flag.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/mtk_wdt.ko: /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/pidmap.ko:
+/lib/modules/max20328-i2c.ko:
+/lib/modules/dbg_error_flag.ko: /lib/modules/mrdump.ko
+/lib/modules/vivo_tshell.ko: /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/adapter_class.ko:
+/lib/modules/mtk-mmdebug-vcp.ko: /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/aee_aed.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/sensors_class.ko:
+/lib/modules/vfcs-core.ko: /lib/modules/max20328-i2c.ko /lib/modules/vfcs-misc-core.ko /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-spmi-pmic-adc.ko:
+/lib/modules/mtk-vmm-notifier-mt6991.ko:
+/lib/modules/syscon-reboot-mode.ko: /lib/modules/reboot-mode.ko
+/lib/modules/vkyber-iosched.ko: /lib/modules/symphony.ko /lib/modules/vivo_rsc.ko
+/lib/modules/shrinker_proxy.ko:
+/lib/modules/panel-nt37801-cmd-fhd.ko: /lib/modules/rt4831a_drv.ko /lib/modules/mtk_panel_ext.ko /lib/modules/leds-mtk.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/pmic_lbat_service.ko:
+/lib/modules/mtk_charger_algorithm_class.ko:
+/lib/modules/mtk_mbraink_bridge.ko:
+/lib/modules/mt6685-core.ko:
+/lib/modules/mtk_et.ko:
+/lib/modules/ufs-mediatek-mod-ise.ko: /lib/modules/rpmb.ko /lib/modules/blocktag.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/mtk-ise-mailbox.ko /lib/modules/ise_lpm.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/vivo_netstats.ko: /lib/modules/vsed.ko
+/lib/modules/vivo_rsc.ko:
+/lib/modules/aee_aed.ko:
+/lib/modules/mt6681-auxadc.ko: /lib/modules/i2c-mt65xx.ko /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/teeperf.ko:
+/lib/modules/mdp_drv_mt6991.ko: /lib/modules/cmdq_helper_inf.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/spi-mt65xx.ko: /lib/modules/irq-dbg.ko
+/lib/modules/gic-ram-parity.ko: /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/mt6681-regulator.ko: /lib/modules/i2c-mt65xx.ko /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/mt6379-battery.ko: /lib/modules/vfcs-meter.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/pmic_lbat_service.ko /lib/modules/aee_aed.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-uart-apdma.ko:
+/lib/modules/ufcs_class.ko:
+/lib/modules/extdev_io_class.ko:
+/lib/modules/mtk-i3c-i2c-wrap.ko: /lib/modules/mtk-i3c-master-mt69xx.ko /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/mtk_pep.ko: /lib/modules/mtk_charger_framework.ko /lib/modules/adapter_class.ko /lib/modules/mtk_charger_algorithm_class.ko /lib/modules/charger_class.ko
+/lib/modules/vfcs-rt9467.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mcDrvModule-ffa.ko: /lib/modules/ffa_v11.ko /lib/modules/event_track.ko
+/lib/modules/vcp_status_v2.ko:
+/lib/modules/xhci-mtk-hcd-v2.ko:
+/lib/modules/sch_cfg.ko:
+/lib/modules/vklp.ko:
+/lib/modules/vfcs-battery_id.ko: /lib/modules/vfcs-fuelsummary.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/bus-parity.ko: /lib/modules/dbg_error_flag.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-mminfra-imax.ko: /lib/modules/mtk_slbc.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko
+/lib/modules/clk-mt6991-vcodec.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/st21nfc.ko: /lib/modules/vivo_board_info_detect.ko
+/lib/modules/log_store.ko:
+/lib/modules/pd-chk-mt6991.ko: /lib/modules/clk-chk-mt6991.ko /lib/modules/clk-common.ko /lib/modules/device-apc-common.ko /lib/modules/vcp_status_v2.ko /lib/modules/aee_aed.ko
+/lib/modules/timer-mediatek.ko:
+/lib/modules/mtk_ufcs_adapter.ko: /lib/modules/adapter_class.ko /lib/modules/ufcs_class.ko
+/lib/modules/mediatek-drm.ko: /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/charger_class.ko:
+/lib/modules/vfcs-bq2579x.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vivo_hr03_i2c.ko: /lib/modules/clkbuf.ko /lib/modules/vivo_board_info.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/aee_aed.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vivo_bsp_security.ko:
+/lib/modules/phy-mtk-pcie.ko:
+/lib/modules/libarc4.ko:
+/lib/modules/phy-mtk-ufs.ko:
+/lib/modules/panel_virtual.ko: /lib/modules/mtk_panel_ext.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-mml-mt6991.ko: /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/panel-truly-td4330-cmd.ko: /lib/modules/rt4831a_drv.ko /lib/modules/mtk_panel_ext.ko /lib/modules/leds-mtk.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/panel_common.ko: /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mt6685-nvtclk.ko: /lib/modules/clkbuf.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/aee_aed.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/panel-alpha-jdi-nt36672e-cphy-vdo.ko: /lib/modules/mtk_panel_ext.ko
+/lib/modules/mt6379-adc.ko: /lib/modules/industrialio-triggered-buffer.ko /lib/modules/kfifo_buf.ko
+/lib/modules/symphony.ko: /lib/modules/vivo_rsc.ko
+/lib/modules/ise-trusty-virtio.ko: /lib/modules/ise-trusty.ko /lib/modules/mcDrvModule-ffa.ko /lib/modules/ffa_v11.ko /lib/modules/mtk-ise-mailbox.ko /lib/modules/ise_lpm.ko /lib/modules/tinysys-scmi.ko /lib/modules/event_track.ko
+/lib/modules/regulator-vibrator.ko:
+/lib/modules/mtk-icc-core.ko:
+/lib/modules/smpu.ko: /lib/modules/emi-mpu.ko /lib/modules/aee_aed.ko
+/lib/modules/adsp.ko: /lib/modules/mtk_slbc.ko /lib/modules/clk-common.ko /lib/modules/device-apc-common.ko /lib/modules/emi.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko /lib/modules/mtk-mbox.ko
+/lib/modules/nvmem_mtk-devinfo.ko:
+/lib/modules/clk-chk-mt6991.ko: /lib/modules/clk-common.ko /lib/modules/device-apc-common.ko /lib/modules/vcp_status_v2.ko /lib/modules/aee_aed.ko
+/lib/modules/ffa_v11.ko:
+/lib/modules/leds-mtk-pwm.ko: /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/tcpc_class.ko: /lib/modules/pd_dbg_info.ko
+/lib/modules/vfcs-vpsy.ko: /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/arm_smmu_v3.ko: /lib/modules/smmu_secure.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/mt6379s.ko:
+/lib/modules/mtk-dvfsrc.ko: /lib/modules/mtk-scpsys.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/clk-common.ko: /lib/modules/aee_aed.ko
+/lib/modules/zcache.ko: /lib/modules/vivo_rsc.ko /lib/modules/v_zsmalloc.ko
+/lib/modules/mtk-scpsys-mt6991-mmpc.ko: /lib/modules/mtk-scpsys-mt6991-spm.ko /lib/modules/mtk-scpsys.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/mtk-scpsys.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/vivo_wifi_driver.ko: /lib/modules/vsed.ko
+/lib/modules/mt6373-regulator.ko:
+/lib/modules/ufs-mediatek-dbg.ko: /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko
+/lib/modules/vfcs-pi-dev.ko: /lib/modules/vfcs-core.ko /lib/modules/max20328-i2c.ko /lib/modules/vfcs-misc-core.ko /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/usb_meta.ko: /lib/modules/bootprof.ko
+/lib/modules/clk-mt6991-img.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/emi-mpu.ko: /lib/modules/aee_aed.ko
+/lib/modules/sec-rng.ko:
+/lib/modules/conninfra.ko: /lib/modules/vivo_board_info.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/ccci_md_all.ko /lib/modules/mtk_pbm.ko /lib/modules/mtk_mdpm.ko /lib/modules/mtk_dynamic_loading_throttling.ko /lib/modules/smpu.ko /lib/modules/emi-mpu.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/ccci_auxadc.ko /lib/modules/ccci_util_lib.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/ccmni.ko /lib/modules/handshake_counter.ko /lib/modules/vivo_tcp.ko /lib/modules/rps_perf.ko /lib/modules/connadp.ko /lib/modules/mtk_low_battery_throttling.ko /lib/modules/pmic_lvsys_notify.ko /lib/modules/pmic_lbat_service.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mtk_pd_adapter.ko: /lib/modules/adapter_class.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko
+/lib/modules/ise-trusty-log.ko: /lib/modules/ise-trusty.ko /lib/modules/mcDrvModule-ffa.ko /lib/modules/ffa_v11.ko /lib/modules/mtk-ise-mailbox.ko /lib/modules/ise_lpm.ko /lib/modules/tinysys-scmi.ko /lib/modules/event_track.ko
+/lib/modules/kprobe_fs_special.ko:
+/lib/modules/mtk_printk_ctrl.ko:
+/lib/modules/ccci_md_all.ko: /lib/modules/mtk_pbm.ko /lib/modules/mtk_mdpm.ko /lib/modules/mtk_dynamic_loading_throttling.ko /lib/modules/smpu.ko /lib/modules/emi-mpu.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/ccci_auxadc.ko /lib/modules/ccci_util_lib.ko /lib/modules/spmi-mtk-pmif.ko /lib/modules/ccmni.ko /lib/modules/handshake_counter.ko /lib/modules/vivo_tcp.ko /lib/modules/rps_perf.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/cfg80211.ko: /lib/modules/rfkill.ko
+/lib/modules/vfcs-cp-dev.ko: /lib/modules/vfcs-fchg-core.ko /lib/modules/vfcs-misc-core.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/ps5170.ko: /lib/modules/mux_switch.ko
+/lib/modules/st54spi.ko: /lib/modules/spi-mt65xx.ko /lib/modules/irq-dbg.ko
+/lib/modules/vr.ko: /lib/modules/vklp.ko
+/lib/modules/system_heap.ko: /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko
+/lib/modules/mtk_pep40.ko: /lib/modules/mtk_charger_framework.ko /lib/modules/adapter_class.ko /lib/modules/mtk_charger_algorithm_class.ko /lib/modules/charger_class.ko
+/lib/modules/slc-parity.ko: /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/tmf8806.ko:
+/lib/modules/aee_rs.ko: /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/usb_boost.ko: /lib/modules/mtk-dvfsrc-helper.ko /lib/modules/mtu3.ko /lib/modules/xhci-mtk-hcd-v2.ko /lib/modules/mtk-dvfsrc.ko /lib/modules/mtk-scpsys.ko /lib/modules/mtk_dramc.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/vivo_haptic_core.ko: /lib/modules/event_track.ko
+/lib/modules/vsed.ko:
+/lib/modules/pinctrl-mt6373.ko: /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/mt6375-auxadc.ko:
+/lib/modules/vcp_v2.ko: /lib/modules/dbgtop-drm.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/clk-common.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/vivo_rsmc_driver.ko:
+/lib/modules/irq-dbg.ko:
+/lib/modules/mtk-dvfsrc-devfreq.ko: /lib/modules/mtk-dvfsrc.ko /lib/modules/mtk-scpsys.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/clk-mt6991-adsp.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/vfcs-fchg-core.ko: /lib/modules/vfcs-misc-core.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk_low_battery_throttling.ko: /lib/modules/pmic_lvsys_notify.ko /lib/modules/pmic_lbat_service.ko
+/lib/modules/8250_mtk.ko: /lib/modules/mtk-uart-apdma.ko
+/lib/modules/drm_dma_helper.ko:
+/lib/modules/mt6379-regulator.ko:
+/lib/modules/vfcs-sc8510.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/rt4831a_drv.ko: /lib/modules/leds-mtk.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/wl28681.ko:
+/lib/modules/mkp.ko: /lib/modules/mrdump.ko
+/lib/modules/vne.ko: /lib/modules/vsed.ko
+/lib/modules/v_zsmalloc.ko:
+/lib/modules/vfcs-max77929.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-mmc.ko: /lib/modules/cqhci.ko /lib/modules/rpmb-mtk.ko /lib/modules/ufs-mediatek-mod-ise.ko /lib/modules/rpmb.ko /lib/modules/mtk-mmc-dbg.ko /lib/modules/blocktag.ko /lib/modules/ufs-mediatek-dbg.ko /lib/modules/mcDrvModule-ffa.ko /lib/modules/ffa_v11.ko /lib/modules/mtk-ise-mailbox.ko /lib/modules/ise_lpm.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/phy-mtk-nxp-eusb2-repeater.ko:
+/lib/modules/mtk_disp_notify.ko:
+/lib/modules/vfcs-sc89601d.ko: /lib/modules/vfcs-chg.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/clk-mt6991-mdpsys.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/mtk_iommu_util.ko:
+/lib/modules/rt_pd_manager.ko: /lib/modules/max20328-i2c.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko
+/lib/modules/mtk-i3c-master-mt69xx.ko: /lib/modules/pinctrl-mtk-common-v2_debug.ko /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/pie_driver.ko:
+/lib/modules/mt6685-audclk.ko:
+/lib/modules/mtk-cmdq-drv-ext.ko: /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko
+/lib/modules/pinctrl-mt6991.ko: /lib/modules/pinctrl-mtk-v2.ko
+/lib/modules/cqhci.ko: /lib/modules/blocktag.ko /lib/modules/mrdump.ko
+/lib/modules/vfcs-multi-fg-core.ko: /lib/modules/vfcs-meter.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/dbgtop-drm.ko:
+/lib/modules/ccci_auxadc.ko: /lib/modules/ccci_util_lib.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko
+/lib/modules/ise-trusty.ko: /lib/modules/mcDrvModule-ffa.ko /lib/modules/ffa_v11.ko /lib/modules/mtk-ise-mailbox.ko /lib/modules/ise_lpm.ko /lib/modules/tinysys-scmi.ko /lib/modules/event_track.ko
+/lib/modules/phy-mtk-xsphy.ko:
+/lib/modules/tcpci_late_sync.ko: /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko
+/lib/modules/mtk-mmdvfs.ko: /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko
+/lib/modules/mtk-mml.ko: /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/rt6160-regulator.ko:
+/lib/modules/vblmc.ko:
+/lib/modules/rt4803.ko:
+/lib/modules/vivo_board_info_detect.ko:
+/lib/modules/arm_dsu_pmu.ko:
+/lib/modules/mtk_sync.ko:
+/lib/modules/wmt_chrdev_wifi_connac3.ko:
+/lib/modules/cmdq-platform-mt6991.ko: /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko
+/lib/modules/mtk_pd_charging.ko: /lib/modules/mtk_charger_framework.ko /lib/modules/adapter_class.ko /lib/modules/mtk_charger_algorithm_class.ko /lib/modules/charger_class.ko
+/lib/modules/spmi-mtk-mpu.ko:
+/lib/modules/bootprof.ko:
+/lib/modules/vfcs-battery.ko: /lib/modules/vfcs-meter.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk_dramc.ko:
+/lib/modules/mtk_2p_charger.ko: /lib/modules/charger_class.ko
+/lib/modules/mtk-swpm-perf-arm-pmu.ko:
+/lib/modules/tmf8801.ko: /lib/modules/vivo_board_info.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/mtk-emi.ko: /lib/modules/mtk-dvfsrc.ko /lib/modules/mtk-scpsys.ko /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/mtk-mmdvfs-debug.ko: /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/tcpc_mt6379.ko: /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko
+/lib/modules/vfcs-vivo-wls-idtp9415.ko: /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vivo_rms.ko: /lib/modules/zcache.ko /lib/modules/symphony.ko /lib/modules/vivo_rsc.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko
+/lib/modules/mrdump.ko:
+/lib/modules/connfem.ko: /lib/modules/vivo_board_info.ko /lib/modules/vivo_board_info_detect.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/slbc_trace.ko:
+/lib/modules/blocktag.ko: /lib/modules/mrdump.ko
+/lib/modules/slbc_ipi.ko: /lib/modules/tinysys-scmi.ko /lib/modules/mtk_slbc.ko
+/lib/modules/mediatek-cpufreq-hw.ko:
+/lib/modules/panel-nt37801-cmd-fhd-plus.ko: /lib/modules/rt4831a_drv.ko /lib/modules/mtk_panel_ext.ko /lib/modules/leds-mtk.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/vivo_rpk_ctrl.ko:
+/lib/modules/load_track.ko:
+/lib/modules/pkvm_smmu.ko:
+/lib/modules/mtk_battery_manager.ko: /lib/modules/mt6379-battery.ko /lib/modules/vfcs-meter.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/pmic_lbat_service.ko /lib/modules/aee_aed.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/cmdq_helper_inf.ko: /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/mrdump.ko
+/lib/modules/mtk_dpc_v2.ko: /lib/modules/mtk_vdisp_v2.ko /lib/modules/mdp_drv_mt6991.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/mtk_pep45.ko: /lib/modules/mtk_charger_framework.ko /lib/modules/adapter_class.ko /lib/modules/mtk_charger_algorithm_class.ko /lib/modules/charger_class.ko
+/lib/modules/mt6363-regulator.ko:
+/lib/modules/vfcs-chg.ko: /lib/modules/vfcs-reserved-block-core.ko /lib/modules/tcpc_mt6379.ko /lib/modules/tcpc_class.ko /lib/modules/pd_dbg_info.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
+/lib/modules/clk-mt6991-peri.ko: /lib/modules/clk-common.ko /lib/modules/aee_aed.ko
+/lib/modules/fp_dispatch_event.ko: /lib/modules/vivo_ts.ko /lib/modules/sensors_class.ko /lib/modules/mediatek-drm.ko /lib/modules/drm_display_helper.ko /lib/modules/cmdq_helper_inf.ko /lib/modules/mtk_disp_notify.ko /lib/modules/mtk_panel_ext.ko /lib/modules/drm_dma_helper.ko /lib/modules/mtk-afe-external.ko /lib/modules/mmqos-common.ko /lib/modules/mtk-mmdvfs-debug.ko /lib/modules/mtk-mmdvfs-ftrace.ko /lib/modules/mtk-mmdvfs.ko /lib/modules/mtk_dramc.ko /lib/modules/leds-mtk.ko /lib/modules/mtk-mminfra-debug.ko /lib/modules/mtk-mml.ko /lib/modules/tinysys-scmi.ko /lib/modules/system_heap.ko /lib/modules/v_zsmalloc.ko /lib/modules/thp_pool.ko /lib/modules/mtk_sync.ko /lib/modules/mtk_slbc.ko /lib/modules/mtk-icc-core.ko /lib/modules/mtk-mmdvfs-v3.ko /lib/modules/clk-common.ko /lib/modules/mtk-mmdebug-vcp.ko /lib/modules/mtk-cmdq-drv-ext.ko /lib/modules/device-apc-common.ko /lib/modules/mtk-smi-dbg.ko /lib/modules/emi.ko /lib/modules/mtk-smi.ko /lib/modules/vcp_status_v2.ko /lib/modules/iommu_debug.ko /lib/modules/mtk_iommu_util.ko /lib/modules/mmprofile.ko /lib/modules/aee_aed.ko /lib/modules/irq-dbg.ko /lib/modules/vivo_display.ko /lib/modules/vfcs-vpsy.ko /lib/modules/event_track.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko /lib/modules/mtk_tinysys_ipi.ko /lib/modules/mtk_rpmsg_mbox.ko /lib/modules/mtk-mbox.ko
+/lib/modules/drm_display_helper.ko:
+/lib/modules/uload_ind.ko: /lib/modules/load_track.ko
+/lib/modules/mac80211.ko: /lib/modules/libarc4.ko /lib/modules/cfg80211.ko /lib/modules/rfkill.ko
+/lib/modules/mtk-mmdvfs-ftrace.ko:
+/lib/modules/mtk_mdpm.ko:
+/lib/modules/vfcs-sm5602.ko: /lib/modules/vfcs-multi-fg-core.ko /lib/modules/vfcs-meter.ko /lib/modules/vfcs-reserved-block-core.ko /lib/modules/vfcs-fuelsummary.ko /lib/modules/vfcs-vpsy.ko /lib/modules/vivo_bsp_engine.ko /lib/modules/mrdump.ko
