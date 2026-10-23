@@ -89,14 +89,11 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 134217728
 
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
-# cmdline 必须与本机实际固件一致: 用户手机原厂 vendor_boot 的 header cmdline
-# 是 15.0.33.7/A1 (见 build/v1/pd2415-vendor-boot.json 的 info/cmdline)。
-# 2026-10-24 教训: 曾按"新固件官方镜像"对齐成 16.1.12.28/A2, 且 bootconfig
-# 传入异固件的 androidboot.avb_pk_hash —— KeyMint Root of Trust (verified
-# boot key) 因此改变, 正常系统锁屏凭据 key blob 解包失败, 密码无法解密.
-# recovery 片段不影响正常启动, 但 cmdline/bootconfig 全程生效.
-# erofs.reserved_pages=256 保留 (原厂 cmdline 之外新增, 厂商 OTA 亦带).
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 erofs.reserved_pages=256 product.version=PD2415_A_15.0.33.7.W10 fingerprint.abbr=15/AP3A.240905.015.A1 region_ver=W10 product.solution=MTK
+# 与官方 vendor_boot 的 header 完全一致 (vendor_boot/header 的 cmdline 行)。
+# 官方多出 erofs.reserved_pages=256, 且 product.version / fingerprint.abbr
+# 都比旧值新一个固件版本。cmdline 会原样写进 boot header, 与内核/系统侧
+# 的预期不一致时可能影响 erofs 挂载与 vivo 的属性校验, 故对齐官方值。
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 erofs.reserved_pages=256 product.version=PD2415_A_16.1.12.28.W10 fingerprint.abbr=15/AP3A.240905.015.A2 region_ver=W10 product.solution=MTK
 
 BOARD_BOOT_HEADER_VERSION := 4
 
