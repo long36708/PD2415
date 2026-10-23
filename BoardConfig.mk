@@ -72,6 +72,13 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtbo.img
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 
+# vendor_boot 的 dtb 段。官方 vendor_boot.img 解包出来的 dtb 是 543026 字节的
+# DTBO 容器 (magic d7b7ab1e, 单条目 542962 字节), 与 dtbo.img 里那 3 条 dtb
+# 内容完全不同 —— 不能互相替代, 也不能用 dtbo.img 顶替。
+# 不设置本项时 mkbootimg 不带 --dtb, 产物 dtb size 为 0, LK 无法选板。
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
+
 
 # From /proc/partitions on device: boot_b=98304 blocks, init_boot_b=8192 blocks
 BOARD_MKBOOTIMG_ARGS := --header_version 4 --kernel_offset 0x00000000 --ramdisk_offset 0x24b00000 --tags_offset 0x07c80000 --dtb_offset 0x07c80000
@@ -82,7 +89,11 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 134217728
 
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 product.version=PD2415_A_15.0.33.7.W10 fingerprint.abbr=15/AP3A.240905.015.A1 region_ver=W10 product.solution=MTK
+# 与官方 vendor_boot 的 header 完全一致 (vendor_boot/header 的 cmdline 行)。
+# 官方多出 erofs.reserved_pages=256, 且 product.version / fingerprint.abbr
+# 都比旧值新一个固件版本。cmdline 会原样写进 boot header, 与内核/系统侧
+# 的预期不一致时可能影响 erofs 挂载与 vivo 的属性校验, 故对齐官方值。
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 erofs.reserved_pages=256 product.version=PD2415_A_16.1.12.28.W10 fingerprint.abbr=15/AP3A.240905.015.A2 region_ver=W10 product.solution=MTK
 
 BOARD_BOOT_HEADER_VERSION := 4
 
