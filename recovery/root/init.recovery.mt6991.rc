@@ -80,6 +80,13 @@ service keymaster-5-0 /vendor/bin/hw/android.hardware.security.keymint@3.0-servi
     group root drmrpc
     seclabel u:r:recovery:s0
 
+# gatekeeper HIDL 1.0 (锁屏凭据路径, recovery 二进制 NEEDED libgatekeeper_aidl)
+service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
+    disabled
+    user root
+    group root drmrpc
+    seclabel u:r:recovery:s0
+
 # mcDriverDaemon --P1 needs the persist partition mounted before it starts.
 # `on fs` demonstrably fires in recovery (microtrust.rc's `start teei_daemon (on fs)`
 # appears in /proc/bootprof), and runs before the recovery binary attempts decryption.
@@ -93,7 +100,16 @@ on fs
 
 on property:ro.vendor.trustonic.ready=true
     start keymaster-5-0
+    start gatekeeper-1-0
     start keystore2
+
+# 解密完成后停掉 TEE 相关服务 (参考树 PD2415(3) 的生命周期), 省内存.
+# teei_daemon 由 microtrust.rc 的 on fs 在二进制就位后自动拉起.
+on property:twrp.decrypt.done=true
+    stop teei_daemon
+    stop keymaster-5-0
+    stop gatekeeper-1-0
+    stop mobicore
 
 service twrpdump /system/bin/sh /twrp_logdump.sh
     seclabel u:r:recovery:s0
