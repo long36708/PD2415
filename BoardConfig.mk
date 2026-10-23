@@ -153,6 +153,19 @@ BOARD_VNDK_VERSION := current
 BOARD_USES_RECOVERY_AS_BOOT := 
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
+# 必须显式打开, 否则 recovery 不会进入 vendor_boot。
+#
+# 机制: build/make 里 vendor ramdisk 的内容来自
+#   INTERNAL_VENDOR_RAMDISK_FILES = $(filter $(TARGET_VENDOR_RAMDISK_OUT)/%, $(ALL_DEFAULT_INSTALLED_MODULES))
+# 即只收"内核模块"。本树没有 kernel modules, 该目录因此是空的, mkbootfs
+# 打印 "cannot open directory" 后仍以 0 退出, 产出一个 4 字节空 cpio,
+# mkbootimg 照常打包 —— 得到结构合法但 ramdisk 为空的 vendor_boot v4,
+# 刷进去 recovery 根本不会启动。
+#
+# 打开 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT 后, build/make 会把
+# TARGET_RECOVERY_ROOT_OUT 作为 recovery 片段 (type 0x2, name "recovery")
+# 单独打包进 vendor_boot, 这才是 vAB 设备 recovery 的正确载体。
+BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := 
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := 
 
