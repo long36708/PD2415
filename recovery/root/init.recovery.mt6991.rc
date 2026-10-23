@@ -15,6 +15,10 @@ on boot
     # 跑在 /vendor/bin/vtsthp 用户态进程里. vtsthp.rc(平台片段自带) 的触发器
     # 会 start vtsthpServiceRecovery0 (seclabel recovery, 专为 recovery 设计).
     # 没有 vtsthp 时中断狂跳但 input 零事件 —— 触摸完全无响应 (设备实测).
+    # 算法链: vtsthp -> dlopen libvts.so (需 libexpat!) -> libvtsthp.so
+    #   (+PD2415_MODID 变体) -> 按 IC dlopen libsynaHal.so (Synaptics TCM).
+    # 缺任何一个都报 vtsthp_tcs_init "failed to get ext version" 不出点.
+    # (活体验证: 补齐后 kalman 初始化完成, event4 吐完整 BTN_TOUCH 事件流)
     setprop vendor.vivo.touch.support.vtsthp_recovery0 1
     symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
