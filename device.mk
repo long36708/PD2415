@@ -74,3 +74,15 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
+# Recovery 属性环境对齐 OS6 固件 (2026-06-01):
+# keymint HAL 在启动时把 OS/Vendor/Boot 补丁级别上报给 TEE; recovery 里的
+# 属性还是 fox_14.1 树的旧值 (Android 14 时代), 与正常系统 (OS6, 2026-06-01)
+# 创建的 keyblob 补丁级别不一致 → 触发 REQUIRES_UPGRADE → 升级又因环境不匹配
+# 失败 (设备实测: metadata key 的 upgraded_file 半完成, TWRP createOperation
+# -38, 正常系统锁屏凭据解包失败). recovery 属性必须与设备固件一致.
+# 直接改 build 变量 (prop.default 由 sysprop.mk 从这两个变量生成),
+# 而不是 PROPERTY_OVERRIDES (会与 buildinfo 生成重复定义).
+# 注意: 不要动 PLATFORM_SECURITY_PATCH_TIMESTAMP —— BoardConfig 的
+# BOARD_AVB_ROLLBACK_INDEX 引用它, 必须保持原值.
+PLATFORM_SECURITY_PATCH := 2026-06-01
+PLATFORM_VENDOR_SECURITY_PATCH := 2026-06-01
