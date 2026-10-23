@@ -1,0 +1,2 @@
+prebuilt/vendor_ramdisk/platform.cpio.lz4 filter=lfs diff=lfs merge=lfs -text
+prebuilt/vendor_ramdisk/bootconfig -text
