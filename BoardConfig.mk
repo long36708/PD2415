@@ -223,6 +223,8 @@ TW_DEFAULT_LANGUAGE := zh_CN
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_DEVICE_VERSION := VIVO X200
 #TW_LOAD_VENDOR_MODULES := "haptic.ko"
+# vivo 触摸驱动: TWRP 启动时从 /vendor/lib/modules/1.1 insmod (参考树同款配置)
+TW_LOAD_VENDOR_MODULES := "vivo_ts.ko"
 #TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 #TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone54/temp"
