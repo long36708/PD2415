@@ -2,6 +2,13 @@ import /microtrust.rc
 
 exec u:r:recovery:s0 root root -- /system/bin/sh /bcb_clear.sh
 
+# 修正 VINTF manifest (9.0→8.0 + device fragment 归位), 必须在 servicemanager
+# 启动前完成 —— svc.rc 在 on init 就 start servicemanager, 故挂在 on early-init.
+# 不修则 libvintf@8.0 解析失败, servicemanager 拒绝所有 AIDL addService,
+# keystore2 无法注册 IKeystoreService, recovery 无法解密 /data (设备已验证).
+on early-init
+    exec u:r:recovery:s0 root root -- /system/bin/sh /fix-vintf.sh
+
 on boot
     symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
