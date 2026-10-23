@@ -11,6 +11,11 @@ on early-init
     exec u:r:recovery:s0 root root -- /system/bin/sh /fix-vintf.sh
 
 on boot
+    # vivo 触摸 THP(Touch Host Processing) daemon: 内核驱动只收中断, 坐标算法
+    # 跑在 /vendor/bin/vtsthp 用户态进程里. vtsthp.rc(平台片段自带) 的触发器
+    # 会 start vtsthpServiceRecovery0 (seclabel recovery, 专为 recovery 设计).
+    # 没有 vtsthp 时中断狂跳但 input 零事件 —— 触摸完全无响应 (设备实测).
+    setprop vendor.vivo.touch.support.vtsthp_recovery0 1
     symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
     
