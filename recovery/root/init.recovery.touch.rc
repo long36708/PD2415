@@ -1,4 +1,15 @@
 on boot
+	trigger check_vts
+
+#normal mode
+on check_vts
+	chmod 444 /proc/cmdline
+	start only_triger_vts_app_recovery
+
+on property:vendor.vivo.touch.atmode_main=0
+	trigger start_vts_app_recovery
+
+on start_vts_app_recovery
 	chown system /proc/NVTSPI
 	chmod 0666 /proc/NVTSPI
 	chown system /proc/nvt_trimid
@@ -164,6 +175,13 @@ on boot
 	start touchupdate
 	start touchaddpanel
 	start touch_property-set
+
+service only_triger_vts_app_recovery /system/bin/vts_app_recovery --start
+	class core
+	user system
+	disabled
+	seclabel u:r:recovery:s0
+	oneshot
 
 service touchupdate /system/bin/vts_app_recovery --update
 	class core
