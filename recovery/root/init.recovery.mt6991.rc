@@ -15,6 +15,15 @@ on early-init
     # 否则 REQUIRES_UPGRADE 升级半完成会写毒药 upgraded_file (已两次复发).
     exec u:r:recovery:s0 root root -- /sbin/resetprop ro.build.version.security_patch 2026-06-01
     exec u:r:recovery:s0 root root -- /sbin/resetprop ro.vendor.build.security_patch 2026-06-01
+    # KeyMint TA (0706...4d.tlbin) 的装载路径: TlcKM/libMcClient 与 mcDriverDaemon
+    # 的 -r 驱动参数都指向 /vendor/app/mcRegistry, 但树里 TA 实际打在
+    # /vendor/mcRegistry (少一层 app/). 缺此链接时 keymint HAL
+    # "get_hmac_sharing_parameters: Invalid session handle", keystore2 共享密钥
+    # 协商每秒重试失败 (run 94 会话实测); 建链后 TEE 内 TA 正常执行
+    # (tlTeeKeymint_rpmb ret=0) + "Successfully registered Keystore 2.0"
+    # (同会话热验证). 必须早于 on fs 的 start mobicore.
+    mkdir /vendor/app 0755 root root
+    symlink /vendor/mcRegistry /vendor/app/mcRegistry
 
 on boot
     symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
