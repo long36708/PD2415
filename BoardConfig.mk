@@ -227,3 +227,8 @@ TW_DEVICE_VERSION := VIVO X200
 #TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone54/temp"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file"
+
+# OrangeFox Configurations
+# 维护者名 (About 页第 4 张卡片 = %of_maintainer%, 经 orangefox.mk
+# -DOF_MAINTAINER 编译宏注入 data.cpp; 不设则卡片为空)
+OF_MAINTAINER := longmo
