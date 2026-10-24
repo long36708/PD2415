@@ -1,9 +1,22 @@
-# mount point	fstype		device			[device2]
+# OrangeFox PD2415 fstab — fs_mgr 5 字段格式
+# 旧版为 3 字段占位模板 (假 mmcblk0pX 设备): TWRP 容错但 boot HAL 的 libfstab
+# "expected 5 fields, got 3" 解析失败 → SIGABRT 崩溃循环 → IBootControl 永远
+# 注册不上 → TWRP FBE 解密 WaitForService(IBootControl) 死等 → UI 无法启动
+# (run 96 实测, binder debugfs + servicemanager 日志实锤)。
+# /data 加密参数照抄 stock fstab.mt6991 (keydirectory = metadata 解密关键),
+# 仅去掉 checkpoint=fs (TWRP 兼容性) 与 fsverity/first_stage_mount。
 
-/boot		emmc		boot
-/cache		ext4		/dev/block/mmcblk0p4
-/data		ext4		/dev/block/mmcblk0p5
-/misc		emmc		misc
-/recovery	emmc		recovery
-/sdcard		vfat		/dev/block/mmcblk0p6
-/system		ext4		/dev/block/mmcblk0p3
+# 源设备                                挂载点       类型  挂载标志                    fsmgr 标志
+/dev/block/by-name/boot                /boot        emmc  defaults                    slotselect
+/dev/block/by-name/preloader_raw_a     /preloader_a emmc  defaults                    defaults
+/dev/block/by-name/preloader_raw_b     /preloader_b emmc  defaults                    defaults
+/dev/block/by-name/misc                /misc        emmc  defaults                    defaults
+/dev/block/by-name/metadata            /metadata     f2fs  noatime,nosuid,nodev,discard wait,check,formattable
+/dev/block/by-name/userdata            /data         f2fs  noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption
+
+# super 逻辑分区 (TWRP 按槽位映射)
+system                                 /system       ext4  ro                          wait,slotselect,logical,avb=vbmeta_system
+vendor                                 /vendor       ext4  ro                          wait,slotselect,logical,avb=vbmeta
+product                                /product      ext4  ro                          wait,slotselect,logical,avb=vbmeta_system
+system_ext                             /system_ext   ext4  ro                          wait,slotselect,logical,avb=vbmeta_system
+odm                                    /odm          ext4  ro                          wait,slotselect,logical,avb=vbmeta
