@@ -12,6 +12,4 @@ ro.vendor.mtk_tee_gp_support=1
 ro.vendor.mtk_microtrust_tee_support=1
 
 # Gatekeeper
-# trustonic: 走 vendor/lib64/hw/gatekeeper.trustonic.so (libMcClient→TEE),
-# beanpod 是旧方案, 与本机 keymint@3.0 trustonic 不配套.
-ro.hardware.gatekeeper=trustonic
+ro.hardware.gatekeeper=beanpod

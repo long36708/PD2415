@@ -9,23 +9,14 @@ exec u:r:recovery:s0 root root -- /system/bin/sh /bcb_clear.sh
 # keystore2 无法注册 IKeystoreService, recovery 无法解密 /data (设备已验证).
 on early-init
     exec u:r:recovery:s0 root root -- /system/bin/sh /fix-vintf.sh
+    # 补丁级别对齐 OS6 (设备 keyblob = 2026-06-01). 构建变量在 fox_14.1 被平台
+    # 侧覆盖 (run 93 实测 prop.default 仍 2099-12-31, device.mk 的赋值无效),
+    # 这里用 resetprop 运行时改写 —— 必须先于 keymint/vold 的任何解密尝试,
+    # 否则 REQUIRES_UPGRADE 升级半完成会写毒药 upgraded_file (已两次复发).
+    exec u:r:recovery:s0 root root -- /sbin/resetprop ro.build.version.security_patch 2026-06-01
+    exec u:r:recovery:s0 root root -- /sbin/resetprop ro.vendor.build.security_patch 2026-06-01
 
 on boot
-    # vivo 触摸 THP(Touch Host Processing) daemon: 内核驱动只收中断, 坐标算法
-    # 跑在 /vendor/bin/vtsthp 用户态进程里. vtsthp.rc(平台片段自带) 的触发器
-    # 会 start vtsthpServiceRecovery0 (seclabel recovery, 专为 recovery 设计).
-    # 没有 vtsthp 时中断狂跳但 input 零事件 —— 触摸完全无响应 (设备实测).
-    # 算法链: vtsthp -> dlopen libvts.so (需 libexpat!) -> libvtsthp.so
-    #   (+PD2415_MODID 变体) -> 按 IC dlopen libsynaHal.so (Synaptics TCM).
-    # 缺任何一个都报 vtsthp_tcs_init "failed to get ext version" 不出点.
-    # (活体验证: 补齐后 kalman 初始化完成, event4 吐完整 BTN_TOUCH 事件流)
-    setprop vendor.vivo.touch.support.vtsthp_recovery0 1
-    # KeyMint TA (0706...4d.tlbin) 由 libMcClient 从 /vendor/app/mcRegistry
-    # 装载 —— TlcKM 找不到它时报 "Keymaster Trusted Application not found",
-    # keystore2 shared secret 无法协商. 我们的 TA 实际在 /vendor/mcRegistry,
-    # 建一层符号链接对齐官方路径 (活体验证: 协商立即成功).
-    mkdir /vendor/app 0755 shell shell
-    symlink /vendor/mcRegistry /vendor/app/mcRegistry
     symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
     symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
     
@@ -36,6 +27,16 @@ on boot
 
    
     write /sys/class/leds/lcd-backlight/brightness 1400
+    # 触摸坐标算法在 /vendor/bin/vtsthp 用户态进程 (THP = Touch Host Processing):
+    # vivo_ts 内核驱动 (内建) 只出原始帧, 没有它中断狂跳但 input 零事件 (设备实测).
+    # 服务定义见 system/etc/init/vtsthp.rc (照抄官方平台片段 —— 路线 C 没有平台
+    # 片段, 必须自带). 算法链: vtsthp -> dlopen libvts.so (需 libexpat, 官方位于
+    # system/lib64!) -> libvtsthp.so(按 MODID 变体) -> libsynaHal.so.
+    # 注意: 这里【不要】手动 setprop vtsthp_recovery0 —— 官方流程由
+    # vts_app_recovery --start/--update (init.recovery.touch.rc 的 check_vts 触发)
+    # 在触摸 IC 初始化完成后才拉起 daemon; on boot 过早 setprop 会让 vtsthp 在
+    # IC 就绪前 open, 实测 syna_dev_resume "Fail to complete hw reset" +
+    # 内核 vts_exception_handler exception:4, 帧流起不来 (run 93 实测).
     # mobicore is started from `on fs` (after persist is mounted for --P1)
 
     start vendor.boot-default
@@ -90,13 +91,6 @@ service keymaster-5-0 /vendor/bin/hw/android.hardware.security.keymint@3.0-servi
     group root drmrpc
     seclabel u:r:recovery:s0
 
-# gatekeeper HIDL 1.0 (锁屏凭据路径, recovery 二进制 NEEDED libgatekeeper_aidl)
-service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
-    disabled
-    user root
-    group root drmrpc
-    seclabel u:r:recovery:s0
-
 # mcDriverDaemon --P1 needs the persist partition mounted before it starts.
 # `on fs` demonstrably fires in recovery (microtrust.rc's `start teei_daemon (on fs)`
 # appears in /proc/bootprof), and runs before the recovery binary attempts decryption.
@@ -110,16 +104,7 @@ on fs
 
 on property:ro.vendor.trustonic.ready=true
     start keymaster-5-0
-    start gatekeeper-1-0
     start keystore2
-
-# 解密完成后停掉 TEE 相关服务 (参考树 PD2415(3) 的生命周期), 省内存.
-# teei_daemon 由 microtrust.rc 的 on fs 在二进制就位后自动拉起.
-on property:twrp.decrypt.done=true
-    stop teei_daemon
-    stop keymaster-5-0
-    stop gatekeeper-1-0
-    stop mobicore
 
 service twrpdump /system/bin/sh /twrp_logdump.sh
     seclabel u:r:recovery:s0
