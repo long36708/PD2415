@@ -1,4 +1,5 @@
 import /microtrust.rc
+import /init.recovery.touch.rc
 
 exec u:r:recovery:s0 root root -- /system/bin/sh /bcb_clear.sh
 
@@ -20,6 +21,12 @@ on boot
 
    
     write /sys/class/leds/lcd-backlight/brightness 1400
+    # 触摸坐标算法在 /vendor/bin/vtsthp 用户态进程 (THP = Touch Host Processing):
+    # vivo_ts 内核驱动只出原始帧, 没有它中断狂跳但 input 零事件 (设备实测).
+    # 服务定义见 system/etc/init/vtsthp.rc (照抄官方平台片段 —— 路线 C 没有平台
+    # 片段, 必须自带). 算法链: vtsthp -> dlopen libvts.so (需 libexpat!)
+    # -> libvtsthp.so(按 MODID 变体) -> libsynaHal.so.
+    setprop vendor.vivo.touch.support.vtsthp_recovery0 1
     # mobicore is started from `on fs` (after persist is mounted for --P1)
 
     start vendor.boot-default

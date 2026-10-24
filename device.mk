@@ -74,3 +74,9 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
+# Recovery 属性环境对齐 OS6 固件 (2026-06-01): keymint 上报的补丁级别必须与
+# 设备 keyblob 一致, 否则触发 REQUIRES_UPGRADE → 升级半完成写毒药 upgraded_file
+# (设备实测, 三处位点). v1 基线没有此项, 每次启动解密尝试都会重新写毒 ——
+# 本分支补上, 保护用户密钥.
+PLATFORM_SECURITY_PATCH := 2026-06-01
+PLATFORM_VENDOR_SECURITY_PATCH := 2026-06-01
