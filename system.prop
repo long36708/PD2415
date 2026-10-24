@@ -12,7 +12,7 @@ ro.vendor.mtk_tee_gp_support=1
 ro.vendor.mtk_microtrust_tee_support=1
 
 # Gatekeeper
-ro.hardware.gatekeeper=beanpod
+ro.hardware.gatekeeper=trustonic
 
 # Clock: Beijing time (OrangeFox 时钟经 persist.sys.timezone 设置 TZ 环境变量;
 # 24 小时制为 OrangeFox 内建格式串 %H:%M, 无需配置)

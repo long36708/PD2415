@@ -100,6 +100,15 @@ service keymaster-5-0 /vendor/bin/hw/android.hardware.security.keymint@3.0-servi
     group root drmrpc
     seclabel u:r:recovery:s0
 
+# gatekeeper HIDL 1.0 —— CE (凭据) 解密链: 锁屏凭据 → GK(TEE) 验证 → 合成口令
+# → CE 密钥派生. metadata 解密不需要它, 解锁 /data/media 等 CE 区需要.
+# 本机无锁屏密码, GK 走空凭据默认派生. (载荷取回自 ef1f503/149cfab)
+service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
+    disabled
+    user root
+    group root drmrpc
+    seclabel u:r:recovery:s0
+
 # mcDriverDaemon --P1 needs the persist partition mounted before it starts.
 # `on fs` demonstrably fires in recovery (microtrust.rc's `start teei_daemon (on fs)`
 # appears in /proc/bootprof), and runs before the recovery binary attempts decryption.
@@ -113,6 +122,7 @@ on fs
 
 on property:ro.vendor.trustonic.ready=true
     start keymaster-5-0
+    start gatekeeper-1-0
     start keystore2
 
 service twrpdump /system/bin/sh /twrp_logdump.sh
