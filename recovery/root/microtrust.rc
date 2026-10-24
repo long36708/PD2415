@@ -234,9 +234,11 @@ on fs
     chown system system /dev/emmcrpmb0
     chown system system /dev/utr_tui
     chmod 0660 /dev/utr_tui
-    write /proc/bootprof "start teei_daemon (on fs)"
-    start teei_daemon
-    write /proc/bootprof "start teei_daemon end (on fs)"
+    write /proc/bootprof "start teei_daemon (on fs) [disabled]"
+    # start teei_daemon —— 禁用: TEEI 在 recovery 内核上从未验证过, 是 run 87/88/90
+    # 重启循环的头号嫌疑 (TEE 固件交互 panic = 整机复位). 模块大包已删, /dev/teei_*
+    # 节点不会出现, daemon 本就无路可走; 显式禁用避免任何 TEE 写入.
+    # write /proc/bootprof "start teei_daemon end (on fs)"
 
 on property:vendor.crypto.fake_encrypt=1 && property:vold.post_fs_data_done=1
     setprop vendor.soter.teei.crypto.state unencrypted
