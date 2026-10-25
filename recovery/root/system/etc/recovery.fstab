@@ -20,3 +20,18 @@ vendor                                 /vendor       ext4  ro                   
 product                                /product      ext4  ro                          wait,slotselect,logical,avb=vbmeta_system
 system_ext                             /system_ext   ext4  ro                          wait,slotselect,logical,avb=vbmeta_system
 odm                                    /odm          ext4  ro                          wait,slotselect,logical,avb=vbmeta
+
+# raw 可刷分区 (2026-10-25 实机热验证通过): TWRP/OrangeFox 刷 Image 的分区列表
+# 来自带 flashimg 标志的 emmc 条目 (boot/super 由 TWRP 特殊处理自动出现, 与本表无关)。
+# vendor_boot 带 backup = 连同 recovery 本体一起默认备份; dtbo/vbmeta* 仅高级备份。
+# lk 为 vivo 双槽 lk_a/lk_b (各 16MB) —— stock fstab.emmc 是 MTK 平台通用模板,
+# 其中的 lk/lk2 在本机 by-name 里不存在, 勿照抄; 显式两槽、不加 slotselect,
+# 刷写时由用户明确选择目标槽。
+/dev/block/by-name/init_boot           /init_boot     emmc  defaults                    slotselect,flashimg,advbackup,display="Init Boot"
+/dev/block/by-name/vendor_boot         /vendor_boot   emmc  defaults                    slotselect,backup,flashimg,display="Vendor Boot"
+/dev/block/by-name/dtbo                /dtbo          emmc  defaults                    slotselect,flashimg,advbackup,display="DTBO"
+/dev/block/by-name/vbmeta              /vbmeta        emmc  defaults                    slotselect,flashimg,advbackup,display="VBMeta"
+/dev/block/by-name/vbmeta_system       /vbmeta_system emmc  defaults                    slotselect,flashimg,advbackup,display="VBMeta System"
+/dev/block/by-name/vbmeta_vendor       /vbmeta_vendor emmc  defaults                    slotselect,flashimg,advbackup,display="VBMeta Vendor"
+/dev/block/by-name/lk_a                /lk_a          emmc  defaults                    flashimg,backup,display="LK Bootloader A"
+/dev/block/by-name/lk_b                /lk_b          emmc  defaults                    flashimg,backup,display="LK Bootloader B"
