@@ -273,9 +273,45 @@ static unsigned bc_get_current_slot(boot_control_module_t *module) {
 
 static int bc_mark_boot_successful(boot_control_module_t *module) {
     (void)module;
-    /* MTK layout carries no successful/tries flags (always zero on device);
-     * LK picks purely by suffix. Do NOT touch counters here: that would fight
-     * a pending slot switch. Report success unconditionally. */
+    /* Do not touch the metadata here: the running slot's successful flag is
+     * managed by the system-side boot control, and writing it from recovery
+     * would fight a pending switch (suffix already points at the target).
+     * Report success unconditionally. */
+    return 0;
+}
+
+/*
+ * Activation transform (mirrors stock libboot_control, per its disasm):
+ *   - target slot: bits 0..6 := 0x6f (priority 15, tries 6, successful 0);
+ *     successful_boot (bit 7) is deliberately CLEARED — a fresh activation
+ *     must keep the bootloader retry path alive so a slot that fails to boot
+ *     can fall back instead of looping forever (device-verified 2026-10-25:
+ *     an activation carrying successful=1 boot-looped endlessly on the
+ *     dm-verity-corrupted slot A). verity_corrupted (bit 8) is preserved.
+ *   - other slot: priority 15 demoted to 14 (tries/successful preserved);
+ *     unbootable slots stay unbootable.
+ * Refuses when the target slot's metadata is zero — that is the platform's
+ * own "unbootable" verdict (failed verity / aborted OTA), and activating
+ * such a slot boot-loops. force overrides.
+ */
+static int activation_transform(mtk_bootctrl *bc, unsigned slot, int force,
+                                uint16_t *out_a, uint16_t *out_b) {
+    uint16_t a = rd16(&bc->raw[12]);
+    uint16_t b = rd16(&bc->raw[14]);
+    uint16_t tgt_old = slot == 0 ? a : b;
+    uint16_t oth_old = slot == 0 ? b : a;
+    if (tgt_old == 0 && !force) {
+        blogf("activate(%u): REFUSED — slot metadata is zero (platform-marked "
+              "unbootable: failed verity/OTA). Use force to override.",
+              slot);
+        return -1;
+    }
+    uint16_t tgt = (uint16_t)((tgt_old & 0x0100u) | 0x006fu);
+    uint16_t oth = ((oth_old & 0x000fu) == 0x000fu)
+                       ? (uint16_t)((oth_old & 0xfff0u) | 0x000eu)
+                       : oth_old;
+    *out_a = slot == 0 ? tgt : oth;
+    *out_b = slot == 1 ? tgt : oth;
     return 0;
 }
 
@@ -287,16 +323,12 @@ static int bc_set_active_boot_slot(boot_control_module_t *module, unsigned slot)
     }
     mtk_bootctrl bc;
     load_or_synthesize(&bc);
-    uint16_t a = rd16(&bc.raw[12]);
-    uint16_t b = rd16(&bc.raw[14]);
-    uint16_t mx = (a > b) ? a : b;
-    if (mx < 2 || mx == 0xFFFFu)
-        mx = 2; /* sane floor / avoid wrapping the "other" counter */
-    uint16_t tgt = mx;
-    uint16_t oth = (uint16_t)(mx - 1);
-    blogf("setActiveBootSlot(%u): counters a=%u b=%u -> a=%u b=%u", slot, a, b,
-          slot == 0 ? tgt : oth, slot == 1 ? tgt : oth);
-    bootctrl_build(&bc, (int)slot, slot == 0 ? tgt : oth, slot == 1 ? tgt : oth);
+    uint16_t na, nb;
+    if (activation_transform(&bc, slot, 0, &na, &nb) != 0)
+        return -1;
+    blogf("setActiveBootSlot(%u): meta a=%04x b=%04x -> a=%04x b=%04x", slot,
+          rd16(&bc.raw[12]), rd16(&bc.raw[14]), na, nb);
+    bootctrl_build(&bc, (int)slot, na, nb);
     if (bootctrl_write(&bc) != 0)
         return -1;
     /* read-back verification */
@@ -421,8 +453,14 @@ boot_control_module_t HAL_MODULE_INFO_SYM __attribute__((visibility("default")))
  * Usage: do_switch 0|1   (0 = slot A, 1 = slot B); power-cycle to boot it.
  */
 int main(int argc, char **argv) {
-    if (argc != 2 || (strcmp(argv[1], "0") && strcmp(argv[1], "1"))) {
-        fprintf(stderr, "usage: %s 0|1   (0=slot A, 1=slot B)\n", argv[0]);
+    int force = (argc > 2 && !strcmp(argv[2], "force"));
+    if (argc < 2 || (strcmp(argv[1], "0") && strcmp(argv[1], "1"))) {
+        fprintf(stderr,
+                "usage: %s 0|1 [force]   (0=slot A, 1=slot B)\n"
+                "Refuses a slot whose metadata is zero (platform-marked\n"
+                "unbootable, e.g. dm-verity-corrupted); append 'force' to\n"
+                "override — a forced slot that fails to boot can loop.\n",
+                argv[0]);
         return 2;
     }
     int slot = atoi(argv[1]);
@@ -431,12 +469,15 @@ int main(int argc, char **argv) {
     printf("current : ");
     for (int i = 0; i < BOOTCTRL_SIZE; i++) printf("%02x", bc.raw[i]);
     printf("  (suffix=%c)\n", bc.raw[1]);
-    uint16_t a = rd16(&bc.raw[12]);
-    uint16_t b = rd16(&bc.raw[14]);
-    uint16_t mx = (a > b) ? a : b;
-    if (mx < 2 || mx == 0xFFFFu) mx = 2;
-    bootctrl_build(&bc, slot, slot == 0 ? mx : (uint16_t)(mx - 1),
-                   slot == 1 ? mx : (uint16_t)(mx - 1));
+    uint16_t na, nb;
+    if (activation_transform(&bc, (unsigned)slot, force, &na, &nb) != 0) {
+        fprintf(stderr,
+                "REFUSED: slot %d is platform-marked unbootable (metadata 0).\n"
+                "Boot it only after re-flashing that slot's partitions.\n",
+                slot);
+        return 3;
+    }
+    bootctrl_build(&bc, slot, na, nb);
     printf("target%d : ", slot);
     for (int i = 0; i < BOOTCTRL_SIZE; i++) printf("%02x", bc.raw[i]);
     printf("  (suffix=%c)\n", bc.raw[1]);
@@ -450,17 +491,22 @@ int main(int argc, char **argv) {
         fprintf(stderr, "FAIL: read-back mismatch — check misc before reboot!\n");
         return 1;
     }
-    printf("OK: verified. Reboot to boot slot %c.\n", slot ? 'B' : 'A');
+    printf("OK: verified (tries=6 pending-success: if it fails to boot, the "
+           "bootloader can fall back). Reboot to boot slot %c.\n",
+           slot ? 'B' : 'A');
     return 0;
 }
 
 #elif defined(BOOTCTRL_HOST_TEST)
 /*
  * Host-side regression test against device-verified data.
- * Oracle: vivo_docs/misc (2026-08-13 switch, performed via platform HAL on
- * device): pre-switch backup (suffix _b, counters A=239 B=238) transformed
- * by setActiveBootSlot(0) into exactly:
- *   5f610000 42434142 01020000 ef00ee00 00000000 00000000 b50e0bf0
+ * Input oracle: the 2026-08-13 pre-switch backup (suffix _b, metadata
+ * A=0xef B=0xee, CRC valid — captured on device before a platform-HAL
+ * switch). The activation transform must yield suffix _a with target
+ * metadata 0x6f (priority 15 / tries 6 / successful 0 — retry semantics)
+ * and the other slot unchanged, plus CRC:
+ *   5f610000 42434142 01020000 6f00ee00 00000000 00000000 acf6e341
+ * Also verifies the unbootable-refusal rule (zero-metadata target).
  */
 #include <assert.h>
 
@@ -497,24 +543,44 @@ int main(int argc, char **argv) {
         fprintf(stderr, "FAIL: input not a valid boot_ctrl block\n");
         return 1;
     }
-    /* replay the 2026-08-13 device switch: setActiveBootSlot(0) */
-    uint16_t a = rd16(&bc.raw[12]);
-    uint16_t b = rd16(&bc.raw[14]);
-    uint16_t mx = (a > b) ? a : b;
-    if (mx < 2 || mx == 0xFFFFu)
-        mx = 2;
-    bootctrl_build(&bc, 0, mx, (uint16_t)(mx - 1));
+    /* replay the 2026-08-13 device switch input through the current
+     * activation semantics (target gets 0x6f: priority 15 / tries 6 /
+     * successful 0; other slot keeps its non-max metadata) */
+    uint16_t na, nb;
+    if (activation_transform(&bc, 0, 0, &na, &nb) != 0) {
+        fprintf(stderr, "FAIL: transform refused a valid bootable target\n");
+        return 1;
+    }
+    bootctrl_build(&bc, 0, na, nb);
     printf("output: ");
     hexdump(bc.raw, BOOTCTRL_SIZE);
     static const uint8_t expected[BOOTCTRL_SIZE] = {
         0x5f, 0x61, 0x00, 0x00, 0x42, 0x43, 0x41, 0x42, 0x01, 0x02, 0x00, 0x00,
-        0xef, 0x00, 0xee, 0x00, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0xb5, 0x0e, 0x0b, 0xf0};
+        0x6f, 0x00, 0xee, 0x00, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0x41, 0xe3, 0xf6, 0xac};
     if (memcmp(bc.raw, expected, BOOTCTRL_SIZE) != 0) {
-        fprintf(stderr, "FAIL: transform does not match device-verified bytes\n");
+        fprintf(stderr, "FAIL: transform does not match expected bytes\n");
         return 1;
     }
-    printf("PASS: setActiveBootSlot(0) reproduces the device-verified state\n");
+    /* refusal oracle: a zero-metadata target must be refused without force */
+    mtk_bootctrl bad;
+    memset(&bad.raw, 0, BOOTCTRL_SIZE);
+    bad.raw[0] = '_';
+    bad.raw[1] = 'b';
+    wr32(&bad.raw[4], MTK_MAGIC);
+    bad.raw[9] = 2;
+    wr16(&bad.raw[12], 0x0000); /* slot A platform-marked unbootable */
+    wr16(&bad.raw[14], 0x009f);
+    wr32(&bad.raw[28], crc32_le(bad.raw, 28));
+    if (activation_transform(&bad, 0, 0, &na, &nb) == 0) {
+        fprintf(stderr, "FAIL: unbootable target was not refused\n");
+        return 1;
+    }
+    if (activation_transform(&bad, 0, 1, &na, &nb) != 0) {
+        fprintf(stderr, "FAIL: force override did not work\n");
+        return 1;
+    }
+    printf("PASS: activation transform + unbootable refusal verified\n");
     return 0;
 }
 #endif /* BOOTCTRL_HOST_TEST */
