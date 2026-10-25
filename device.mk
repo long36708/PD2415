@@ -80,3 +80,16 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 # 本分支补上, 保护用户密钥.
 PLATFORM_SECURITY_PATCH := 2026-06-01
 PLATFORM_VENDOR_SECURITY_PATCH := 2026-06-01
+
+# fastbootd (userspace fastboot, 动态分区刷写): 二进制与接口库由 TW_INCLUDE_FASTBOOTD
+# 带入, 这里按 emira/rodin 参考树显式声明包; ro.fastbootd.available 是 recovery
+# 二进制运行时读取的可用性门控 (参考树 samsung a50/tama 配方), 缺它 fastbootd
+# 页面会拒绝启动 (E:Failed to start fastbootd page.)。属性经 prop.default 生效,
+# 与 ro.twrp.vendor_boot 同机制。
+PRODUCT_PACKAGES += \
+    fastbootd \
+    android.hardware.fastboot@1.0 \
+    android.hardware.fastboot@1.1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fastbootd.available=true
