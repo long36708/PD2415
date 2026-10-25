@@ -14,6 +14,10 @@ ro.vendor.mtk_microtrust_tee_support=1
 # Gatekeeper
 ro.hardware.gatekeeper=trustonic
 
+# Boot control passthrough module for TWRP/OrangeFox slot switching
+# (bootctrl.mt6991.so in recovery/root/vendor/lib64/hw/)
+ro.hardware.bootctrl=mt6991
+
 # Clock: Beijing time (OrangeFox 时钟经 persist.sys.timezone 设置 TZ 环境变量;
 # 24 小时制为 OrangeFox 内建格式串 %H:%M, 无需配置)
 persist.sys.timezone=Asia/Shanghai
