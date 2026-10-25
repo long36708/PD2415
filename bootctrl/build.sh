@@ -33,5 +33,17 @@ CC=$NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe
 "$CC" --target=aarch64-linux-android29 -O2 -Wall -Wextra \
     -o test_hwload test_hwload.c
 
+# Standalone slot switcher for recovery adb (suffix + counters + CRC in one
+# verified write — same transform as the module's setActiveBootSlot):
+#   /tmp/do_switch 0|1
+"$CC" --target=aarch64-linux-android29 -O2 -Wall \
+    -DBOOTCTRL_TOOL -o do_switch bootctrl_mtk.c
+
+# HIDL-passthrough introspection (call the mtkimpl's libboot_control
+# directly: Init / SetActiveBootSlot with snapshot+restore):
+"$NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" \
+    --target=aarch64-linux-android29 -O2 -Wall -static-libstdc++ \
+    -o test_init test_init.cpp
+
 cp -f bootctrl.mt6991.so ../recovery/root/vendor/lib64/hw/bootctrl.mt6991.so
 echo "done — commit recovery/root/vendor/lib64/hw/bootctrl.mt6991.so with your change"

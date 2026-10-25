@@ -85,11 +85,50 @@ Return<void> BootControl::markBootSuccessful(markBootSuccessful_cb _hidl_cb) {
     return Void();
 }
 
+// vivo PD2415 (MT6991, OS6): the LK bootloader picks the boot slot from the
+// suffix field at the start of the boot_ctrl block in misc (device-verified
+// 2026-08 / 2026-10-25: two states with identical slot metadata but different
+// suffixes boot different slots; "[LK_AB] compare priority" does not decide).
+// Neither this impl nor the stock AIDL HAL updates the suffix in
+// setActiveBootSlot, so a switch silently reverts: LK boots the old slot by
+// suffix, then the system-side boot control reconciles the mismatched "active"
+// metadata back to the booted slot. Align the suffix with the target slot;
+// UpdateAndSaveBootloaderControl rewrites the CRC.
+static void AlignMiscSuffixWithSlot(unsigned slot) {
+    std::string err;
+    std::string device = get_bootloader_message_blk_device(&err);
+    if (device.empty()) {
+        ALOGE("suffix align: no bootloader message device: %s", err.c_str());
+        return;
+    }
+    bootloader_control bc;
+    if (!LoadBootloaderControl(device, &bc)) {
+        ALOGE("suffix align: failed to load bootloader control");
+        return;
+    }
+    // Operate on raw bytes: the suffix lives at offset 0 of the 32-byte
+    // block regardless of struct field naming across branches.
+    unsigned char* raw = reinterpret_cast<unsigned char*>(&bc);
+    raw[0] = '_';
+    raw[1] = (slot == 1) ? 'b' : 'a';
+    raw[2] = 0;
+    raw[3] = 0;
+    if (!UpdateAndSaveBootloaderControl(device, &bc)) {
+        ALOGE("suffix align: failed to save bootloader control");
+    }
+}
+
 Return<void> BootControl::setActiveBootSlot(uint32_t slot, setActiveBootSlot_cb _hidl_cb) {
     struct CommandResult cr;
-    if (impl_.SetActiveBootSlot(slot) && implext_.SetBootRegionSlot(slot)) {
+    bool impl_ok = impl_.SetActiveBootSlot(slot);
+    bool region_ok = impl_ok && implext_.SetBootRegionSlot(slot);
+    if (impl_ok) {
+        AlignMiscSuffixWithSlot(slot);
+        // UFS boot-region control is best-effort: LK derives the boot region
+        // from the suffix, so an ioctl failure (e.g. unreachable in
+        // recovery) must not fail a switch that is already consistent.
         cr.success = true;
-        cr.errMsg = "Success";
+        cr.errMsg = region_ok ? "Success" : "Success (boot region control skipped)";
     } else {
         cr.success = false;
         cr.errMsg = "Operation failed";

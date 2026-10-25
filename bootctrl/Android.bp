@@ -16,7 +16,13 @@
 
 cc_library_shared {
     name: "android.hardware.boot@1.2-mtkimpl",
-    stem: "android.hardware.boot@1.0-impl-1.2-mtkimpl",
+    // Install under the exact name HIDL passthrough resolves for
+    // IBootControl::getService(): libhidl dlopens
+    // "android.hardware.boot@1.0-impl.so" (TWRP/OrangeFox slot switching
+    // goes through that path, NOT hw_get_module). Verified on device
+    // 2026-10-25; any other filename leaves the recovery UI failing with
+    // "Error getting bootctrl module".
+    stem: "android.hardware.boot@1.0-impl",
     defaults: [
         "hidl_defaults",
         "libboot_control_defaults",

@@ -408,7 +408,53 @@ boot_control_module_t HAL_MODULE_INFO_SYM __attribute__((visibility("default")))
     .reserved = {0},
 };
 
-#ifdef BOOTCTRL_HOST_TEST
+#ifdef BOOTCTRL_TOOL
+/*
+ * do_switch — standalone slot switch for recovery adb shells.
+ *
+ * Performs the device-verified complete switch in one write: suffix (the
+ * field LK actually selects by) + slot counters (target = larger value,
+ * other = value - 1, matching the stock HAL's observable arithmetic) +
+ * CRC-32, with read-back verification. This is the same transform the
+ * BOOTCTRL_HOST_TEST oracle validates byte-for-byte.
+ *
+ * Usage: do_switch 0|1   (0 = slot A, 1 = slot B); power-cycle to boot it.
+ */
+int main(int argc, char **argv) {
+    if (argc != 2 || (strcmp(argv[1], "0") && strcmp(argv[1], "1"))) {
+        fprintf(stderr, "usage: %s 0|1   (0=slot A, 1=slot B)\n", argv[0]);
+        return 2;
+    }
+    int slot = atoi(argv[1]);
+    mtk_bootctrl bc;
+    load_or_synthesize(&bc);
+    printf("current : ");
+    for (int i = 0; i < BOOTCTRL_SIZE; i++) printf("%02x", bc.raw[i]);
+    printf("  (suffix=%c)\n", bc.raw[1]);
+    uint16_t a = rd16(&bc.raw[12]);
+    uint16_t b = rd16(&bc.raw[14]);
+    uint16_t mx = (a > b) ? a : b;
+    if (mx < 2 || mx == 0xFFFFu) mx = 2;
+    bootctrl_build(&bc, slot, slot == 0 ? mx : (uint16_t)(mx - 1),
+                   slot == 1 ? mx : (uint16_t)(mx - 1));
+    printf("target%d : ", slot);
+    for (int i = 0; i < BOOTCTRL_SIZE; i++) printf("%02x", bc.raw[i]);
+    printf("  (suffix=%c)\n", bc.raw[1]);
+    if (bootctrl_write(&bc) != 0) {
+        fprintf(stderr, "FAIL: write\n");
+        return 1;
+    }
+    mtk_bootctrl chk;
+    if (bootctrl_read(&chk) != 0 || !bootctrl_valid(&chk) ||
+        memcmp(chk.raw, bc.raw, BOOTCTRL_SIZE) != 0) {
+        fprintf(stderr, "FAIL: read-back mismatch — check misc before reboot!\n");
+        return 1;
+    }
+    printf("OK: verified. Reboot to boot slot %c.\n", slot ? 'B' : 'A');
+    return 0;
+}
+
+#elif defined(BOOTCTRL_HOST_TEST)
 /*
  * Host-side regression test against device-verified data.
  * Oracle: vivo_docs/misc (2026-08-13 switch, performed via platform HAL on
