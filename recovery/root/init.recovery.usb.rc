@@ -86,10 +86,16 @@ on property:sys.usb.config=adb && property:sys.usb.configfs=1
 on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
     start adbd
 
+# PID 对齐 (2026-10-27): 平台 hw/init.rc 的 adb/sideload/fastboot 块用
+# ro.recovery.usb.{adb,fastboot}.pid 展开写 PID (AOSP 默认 D001/4EE0), 本文件
+# 硬编码值原为 4EE7/D00D —— 两套值不一致时, fastbootd 置 ffs.ready=1 的边沿
+# 让两边 action 各写各的 PID, gadget 描述符翻转 = USB 中途重枚举, fastbootd
+# 会话必死 (PC 端 error 31)。以下 PID 全部对齐 AOSP 默认值, 使三套 rc
+# (本文件 + init.recovery.mt6991.rc + hw/init.rc) 的所有 gadget action 幂等。
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
     write /config/usb_gadget/g1/idVendor 0x18D1
-    write /config/usb_gadget/g1/idProduct 0x4EE7
+    write /config/usb_gadget/g1/idProduct 0xD001
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
@@ -97,7 +103,7 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.u
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=sideload && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
     write /config/usb_gadget/g1/idVendor 0x18D1
-    write /config/usb_gadget/g1/idProduct 0x4EE7
+    write /config/usb_gadget/g1/idProduct 0xD001
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
@@ -131,7 +137,7 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=fastboot && property:
     rm /config/usb_gadget/g1/configs/b.1/f2
     rm /config/usb_gadget/g1/configs/b.1/f3
     write /config/usb_gadget/g1/idVendor 0x18D1
-    write /config/usb_gadget/g1/idProduct 0xD00D
+    write /config/usb_gadget/g1/idProduct 0x4EE0
     symlink /config/usb_gadget/g1/functions/ffs.fastboot /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
